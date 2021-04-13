@@ -12,7 +12,9 @@
 	let brushColor = "#000000";
 	let brushPicker;
 	let bgPicker;
-	
+
+	const downloadButton = document.getElementById('downloadButton');
+
 	// Startup
 	window.addEventListener("load", startup, false);
 
@@ -76,4 +78,12 @@
 		context.stroke();
 		context.closePath();
 	}
+
+	// Downloading
+	downloadButton.addEventListener('click', e => {
+		let link = document.createElement('a');
+		link.download = 'rang.png';
+		link.href = canvas.toDataURL()
+		link.click();
+	});
 }());
