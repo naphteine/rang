@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv=x-ua-compatible content="ie=edge">
-		<meta name=viewport content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<title>Rang</title>
-	</head>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv=x-ua-compatible content="ie-edge">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<title>Rang</title>
+</head>
+<body>
+	<header>
+		<h1>Rang</h1>
+	</header>
+	<main>
+		<div>
+			<canvas id="mainCanvas" width="960" height="540">Your browser does not support canvas!</canvas>
+		</div>
 
-	<body>
-		<center>
-			<h3>Rang</h3>
-			
-			<div>
-				<canvas id="mainCanvas" width="960" height="540">Your browser does not support canvas!</canvas>
-			</div>
+		<label for="brushColor">Brush color</label>
+		<input class="btn btn-outline-primary" type="color" id="brushColor" name="brushColor" value="#000">
 
-			<label for="brushColor">Brush color</label>
-			<input type="color" id="brushColor" name="brushColor" value="#000">
+		<label for="bgColor">Background color</label>
+		<input class="btn btn-outline-primary" type="color" id="bgColor" name="bgColor" value="#ffffff">
+		<input class="btn btn-primary" id="downloadButton" type="button" value="Download">
+	</main>
+	<footer>
+			<h6><a href="https://gguilt.github.io">gguilt</a></h6>
+	</footer>
 
-			<label for="bgColor">Background color</label>
-			<input type="color" id="bgColor" name="bgColor" value="#ffffff">
-
-			<button type="button" id="downloadButton">Download</button>
-		</center>
-		<script type="text/javascript" src="js/rang.js"></script>
-	</body>
+	<script src="js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"></script>
+	<script src="js/rang.js"></script>
+</body>
 </html>

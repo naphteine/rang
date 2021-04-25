@@ -1,6 +1,21 @@
 body {
-	background-color: #eee;
-	color: #333;
+    background-color: hsl(37, 18%, 91%);
+    color: #333;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+header {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+footer {
+    margin-top: 35px;
+    margin-bottom: 60px;
 }
 
 canvas {
@@ -9,13 +24,4 @@ canvas {
 	border: 1px solid #000;
 	width: 960px;
 	height: 540px;
-}
-
-h1, h2, h3 {
-	line-height: 1.2;
-}
-
-html {
-	margin: 0;
-	padding: 0;
 }
