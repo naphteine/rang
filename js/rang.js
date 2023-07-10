@@ -1,89 +1,96 @@
-(function() {
-	"use strict";
+(function () {
+  "use strict";
 
-	const canvas = document.getElementById('mainCanvas');
-	const context = canvas.getContext('2d');
+  const canvas = document.getElementById("mainCanvas");
+  const context = canvas.getContext("2d");
 
-	let isDrawing = false;
-	let x = 0;
-	let y = 0;
+  canvas.width = (window.innerWidth * 90) / 100;
+  canvas.height = (window.innerHeight * 70) / 100;
 
-	let bgColor = "#ffffff";
-	let brushColor = "#000000";
-	let brushPicker;
-	let bgPicker;
+  console.log(window.innerWidth);
+  console.log(canvas.width);
+  console.log(canvas.height);
 
-	const downloadButton = document.getElementById('downloadButton');
+  let isDrawing = false;
+  let x = 0;
+  let y = 0;
 
-	// Startup
-	window.addEventListener("load", startup, false);
+  let bgColor = "#ffffff";
+  let brushColor = "#000000";
+  let brushPicker;
+  let bgPicker;
 
-	function startup() {
-		// Set up brush color picker
-		brushPicker = document.querySelector("#brushColor");
-		brushPicker.value = brushColor;
-		brushPicker.addEventListener("input", pickerUpdate, false);
-		brushPicker.addEventListener("change", pickerUpdate, false);
-		brushPicker.select();
+  const downloadButton = document.getElementById("downloadButton");
 
-		// Set up background color picker
-		bgPicker = document.querySelector("#bgColor");
-		bgPicker.value = bgColor;
-		bgPicker.addEventListener("input", bgPickerUpdate, false);
-		bgPicker.addEventListener("change", bgPickerUpdate, false);
-		bgPicker.select();
-	}
+  // Startup
+  window.addEventListener("load", startup, false);
 
-	// Color input handling
-	function pickerUpdate(event) {
-		brushColor = event.target.value;
-	}
+  function startup() {
+    // Set up brush color picker
+    brushPicker = document.querySelector("#brushColor");
+    brushPicker.value = brushColor;
+    brushPicker.addEventListener("input", pickerUpdate, false);
+    brushPicker.addEventListener("change", pickerUpdate, false);
+    brushPicker.select();
 
-	function bgPickerUpdate(event) {
-		bgColor = event.target.value;
-		context.fillStyle = bgColor;
-		context.fillRect(0, 0, canvas.width, canvas.height);
-	}
+    // Set up background color picker
+    bgPicker = document.querySelector("#bgColor");
+    bgPicker.value = bgColor;
+    bgPicker.addEventListener("input", bgPickerUpdate, false);
+    bgPicker.addEventListener("change", bgPickerUpdate, false);
+    bgPicker.select();
+  }
 
-	// Canvas handling
-	canvas.addEventListener('mousedown', e => {
-		x = e.offsetX;
-		y = e.offsetY;
-		isDrawing = true;
-	});
+  // Color input handling
+  function pickerUpdate(event) {
+    brushColor = event.target.value;
+  }
 
-	canvas.addEventListener('mousemove', e => {
-		if (isDrawing === true) {
-			drawLine(context, x, y, e.offsetX, e.offsetY);
-			x = e.offsetX;
-			y = e.offsetY;
-		}
-	});
+  function bgPickerUpdate(event) {
+    bgColor = event.target.value;
+    context.fillStyle = bgColor;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
-	canvas.addEventListener('mouseup', e => {
-		if (isDrawing === true) {
-			drawLine(context, x, y, e.offsetX, e.offsetY);
-			x = 0;
-			y = 0;
-			isDrawing = false;
-		}
-	});
+  // Canvas handling
+  canvas.addEventListener("mousedown", (e) => {
+    x = e.offsetX;
+    y = e.offsetY;
+    isDrawing = true;
+  });
 
-	function drawLine(context, x1, y1, x2, y2) {
-		context.beginPath();
-		context.strokeStyle = brushColor;
-		context.lineWidth = 1;
-		context.moveTo(x1, y1);
-		context.lineTo(x2, y2);
-		context.stroke();
-		context.closePath();
-	}
+  canvas.addEventListener("mousemove", (e) => {
+    if (isDrawing === true) {
+      drawLine(context, x, y, e.offsetX, e.offsetY);
+      x = e.offsetX;
+      y = e.offsetY;
+    }
+  });
 
-	// Downloading
-	downloadButton.addEventListener('click', e => {
-		let link = document.createElement('a');
-		link.download = 'rang.png';
-		link.href = canvas.toDataURL()
-		link.click();
-	});
-}());
+  canvas.addEventListener("mouseup", (e) => {
+    if (isDrawing === true) {
+      drawLine(context, x, y, e.offsetX, e.offsetY);
+      x = 0;
+      y = 0;
+      isDrawing = false;
+    }
+  });
+
+  function drawLine(context, x1, y1, x2, y2) {
+    context.beginPath();
+    context.strokeStyle = brushColor;
+    context.lineWidth = 1;
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    context.closePath();
+  }
+
+  // Downloading
+  downloadButton.addEventListener("click", (e) => {
+    let link = document.createElement("a");
+    link.download = "rang.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+})();
